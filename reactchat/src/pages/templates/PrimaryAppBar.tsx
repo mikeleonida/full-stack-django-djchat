@@ -19,7 +19,7 @@ const PrimaryAppBar = () => {
   const isSmallScren = useMediaQuery(theme.breakpoints.up('sm'));
 
   useEffect(() => {
-    if (!isSmallScren && sideMenu) {
+    if (isSmallScren && sideMenu) {
       setSideMenu(false);
     }
   }, [isSmallScren]);
@@ -27,7 +27,7 @@ const PrimaryAppBar = () => {
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
       if (
-        event.type === keydown &&
+        event.type === 'keydown' &&
         ((event as React.KeyboardEvent).key === 'Tab' ||
           (event as React.KeyboardEvent).key === 'Shift')
       ) {
