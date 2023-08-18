@@ -2,6 +2,7 @@
 from django.db.models import Count
 from rest_framework import viewsets
 from rest_framework.exceptions import AuthenticationFailed, ValidationError
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 # Import the Server model and its corresponding serializer
@@ -14,6 +15,7 @@ from .serializer import ServerSerializer
 class ServerListViewSet(viewsets.ViewSet):
     # Set the initial queryset to retrieve all Server objects
     queryset = Server.objects.all()
+    permission_classes = [IsAuthenticated]
 
     @server_list_docs
     def list(self, request):
